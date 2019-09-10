@@ -2,30 +2,17 @@
 
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Author</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @posts.each do |p| %>
+  <div class='col-sm-12 col-md-4% post-block' >
+    <p>
+      <%= p.title %> on <%= p.created_at %> by <%= p.author %>
+    </p>
+    <p>
+      <%= p.body %><br>
+      <%= link_to 'Show', p, class: 'btn btn-sm btn-outline-info' %>
+      <%= link_to 'Edit', edit_post_path(p), class: 'btn btn-sm btn-outline-warning' %>
+      <%= link_to 'Destroy', p, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+    </p>
+    </div>
+<% end %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= post.author %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>

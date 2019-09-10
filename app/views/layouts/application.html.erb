@@ -12,7 +12,7 @@
   <body>
     <div class='container'>
       <div class='nav'>
-        <%= link_to 'HOME', root_path %> | <<%= link_to 'NEW POST', new_post_path %>>
+        <%= link_to 'HOME', root_path, class: 'btn btn-outline-dark' %> <%= link_to 'NEW POST', new_post_path, class: 'btn btn-outline-dark' %>
       </div>
       <%= yield %>
     </div>
